@@ -5,6 +5,8 @@ import Logo from "./Logo";
 import LogoutBtn from "./Header/LogoutBtn";
 import Button from "./Button"
 import Input from "./Input";
+import Select from "./Select"
+import RTE from "./RTE";
 
 
 export { 
@@ -14,7 +16,9 @@ export {
     Logo,
     LogoutBtn,
     Button,
-    Input
+    Input,
+    RTE,
+    Select
 };
 // This file serves as an index for exporting components from the components directory.
 // It allows for cleaner imports in other parts of the application.
