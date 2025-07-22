@@ -1,7 +1,7 @@
 import conf from "../conf/conf.js";
 import { Client, Account, ID, Query,} from "appwrite";
 
-export class DbService {
+export  default class DbService {
     client = new Client();
     databases;
     bucket;
@@ -80,7 +80,7 @@ export class DbService {
         }
     }
 
-    async getAllPosts(queries=  [Query.equal("statur", "active")]) {
+    async getAllPosts(queries=  [Query.equal("status", "active")]) {
         try {
             return await this.databases.listDocuments(
                 conf.appwriteDatabaseId,

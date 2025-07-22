@@ -7,6 +7,12 @@ import Button from "./Button"
 import Input from "./Input";
 import Select from "./Select"
 import RTE from "./RTE";
+import Signup from "./Signup";
+import Login from "./Login";
+import PostForm from "./post-form/PostForm";
+import PostCard from "./PostCard";
+import AuthLayout from "./AuthLayout";
+
 
 
 export { 
@@ -18,7 +24,12 @@ export {
     Button,
     Input,
     RTE,
-    Select
+    Select,
+    Signup,
+    Login,
+    PostForm,
+    PostCard,
+    AuthLayout
 };
 // This file serves as an index for exporting components from the components directory.
 // It allows for cleaner imports in other parts of the application.
