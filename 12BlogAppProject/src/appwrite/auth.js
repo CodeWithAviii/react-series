@@ -30,7 +30,7 @@ export class AuthService{
 
     async login({ email, password }) {
         try {
-            const session = await this.account.createEmailPasswordSession(email, password);
+            const session = await this.account.createEmailSession(email, password);
             return session;
         } catch (error) {
             throw error;
@@ -41,9 +41,8 @@ export class AuthService{
         try {
             return await this.account.get();
         } catch (error) {
-            throw error;
+           console.warn("User not logged in:", error.message);
         }
-
         return null;
     }
 

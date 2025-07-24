@@ -1,30 +1,31 @@
-import React, { useState } from 'react'
+import React, {useState} from 'react'
 import authService from '../appwrite/auth'
-import { Link, useNavigate } from 'react-router-dom'
-import { login } from '../store/authSlice'
-import {Button, Input, Logo} from './index'
-import { useDispatch } from 'react-redux'
-import { useForm } from 'react-hook-form'
+import {Link ,useNavigate} from 'react-router-dom'
+import {login} from '../store/authSlice'
+import {Button, Input, Logo} from './index.js'
+import {useDispatch} from 'react-redux'
+import {useForm} from 'react-hook-form'
 
 function Signup() {
-    const [error, setError] = useState('')
     const navigate = useNavigate()
+    const [error, setError] = useState("")
     const dispatch = useDispatch()
-    const { register, handleSubmit } = useForm()
+    const {register, handleSubmit} = useForm()
 
-    const create = async (data) => {
-        setError('')
+    const create = async(data) => {
+        setError("")
         try {
             const userData = await authService.createAccount(data)
             if (userData) {
-                const res = await authService.getCurrentUser()
-                if (res) dispatch(login(res))
-                navigate('/')
+                const userData = await authService.getCurrentUser()
+                if(userData) dispatch(login(userData));
+                navigate("/")
             }
         } catch (error) {
-            setError(error.message || 'Signup failed')
+            setError(error.message)
         }
     }
+
   return (
     <div className="flex items-center justify-center">
             <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
