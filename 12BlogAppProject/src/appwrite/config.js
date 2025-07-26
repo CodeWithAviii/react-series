@@ -1,7 +1,7 @@
 import conf from "../conf/conf.js";
-import { Client, Account, ID, Query,} from "appwrite";
+import { Client, ID, Databases, Storage, Query } from "appwrite";
 
-export  default class DbService {
+export class Service {
     client = new Client();
     databases;
     bucket;
@@ -125,3 +125,6 @@ export  default class DbService {
         );
     }
 }
+
+const service = new Service()
+export default service

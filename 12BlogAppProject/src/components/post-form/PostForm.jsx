@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { set, useForm } from 'react-hook-form'
+import { useForm } from 'react-hook-form'
 import { Input, Button, Select, RTE } from '../index'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
@@ -10,23 +10,22 @@ function PostForm({post}) {
         defaultValues: {
             title: post?.title || "",
             content: post?.content || "",
-            slug: post?.slug || "",
+            slug: post?.$id || "",
             status: post?.status || "active",
 
         }
     })
 
     const navigate = useNavigate()
-    const userData = useSelector(state => state.user.userData)
+    const userData = useSelector(state => state.auth.userData)
 
     const submit = async (data) => {
         if(post) {
             const file = data.image[0] ? appwriteService.uploadFile(data.image[0]): null
-        }
         if(file) {
             appwriteService.deleteFile(post.featuredImage)
         }
-
+    }
         const dbPost = await appwriteService.updatePost(
             post.$id, {
                 ...data,
